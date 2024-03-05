@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>oracle账号锁定解决 | Xlai的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Windows环境下1.以管理员身份登录数据库： 打开命令行工具或终端。  设置ORACLE_SID环境变量。  临时设置（仅对当前命令窗口生效）  123set ORACLE_SID&#x3D;ORCL&#x2F;&#x2F; 在Linux或Unix系统中，使用export命令来设置环境变量export ORACLE_SID&#x3D;ORCL  尝试以SYSDBA权限登录：sqlplus &#x2F; as sysdba   2.解锁SYST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle账号锁定解决">
+<meta property="og:url" content="http://example.com/2024/03/05/oracle%E8%B4%A6%E5%8F%B7%E9%94%81%E5%AE%9A%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:site_name" content="Xlai的博客">
+<meta property="og:description" content="Windows环境下1.以管理员身份登录数据库： 打开命令行工具或终端。  设置ORACLE_SID环境变量。  临时设置（仅对当前命令窗口生效）  123set ORACLE_SID&#x3D;ORCL&#x2F;&#x2F; 在Linux或Unix系统中，使用export命令来设置环境变量export ORACLE_SID&#x3D;ORCL  尝试以SYSDBA权限登录：sqlplus &#x2F; as sysdba   2.解锁SYST">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-05T01:13:36.000Z">
+<meta property="article:modified_time" content="2024-03-05T01:39:12.725Z">
+<meta property="article:author" content="Xlai">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Xlai的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Xlai的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-oracle账号锁定解决" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/05/oracle%E8%B4%A6%E5%8F%B7%E9%94%81%E5%AE%9A%E8%A7%A3%E5%86%B3/" class="article-date">
+  <time class="dt-published" datetime="2024-03-05T01:13:36.000Z" itemprop="datePublished">2024-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      oracle账号锁定解决
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Windows环境下"><a href="#Windows环境下" class="headerlink" title="Windows环境下"></a><code>Windows</code>环境下</h1><h4 id="1-以管理员身份登录数据库："><a href="#1-以管理员身份登录数据库：" class="headerlink" title="1.以管理员身份登录数据库："></a>1.以管理员身份登录数据库：</h4><ul>
+<li><p>打开命令行工具或终端。</p>
+</li>
+<li><p>设置<code>ORACLE_SID</code>环境变量。</p>
+<ol>
+<li>临时设置（仅对当前命令窗口生效）</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">// 在Linux或Unix系统中，使用export命令来设置环境变量</span><br><span class="line">export ORACLE_SID=ORCL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>尝试以<code>SYSDBA</code>权限登录：<code>sqlplus / as sysdba</code></p>
+</li>
+</ul>
+<h4 id="2-解锁SYSTEM账号："><a href="#2-解锁SYSTEM账号：" class="headerlink" title="2.解锁SYSTEM账号："></a>2.<strong>解锁<code>SYSTEM</code>账号</strong>：</h4><ul>
+<li>登录成功后，执行以下SQL命令来解锁<code>SYSTEM</code>账号：<code>ALTER USER system ACCOUNT UNLOCK;</code></li>
+<li>如果您同时也需要重置<code>SYSTEM</code>账号的密码，可以使用如下命令：<code>ALTER USER system IDENTIFIED BY 新密码 ACCOUNT UNLOCK;</code>，请将<code>新密码</code>替换为您想设置的密码。</li>
+</ul>
+<h4 id="3-验证和后续步骤："><a href="#3-验证和后续步骤：" class="headerlink" title="3.验证和后续步骤："></a>3.<strong>验证和后续步骤</strong>：</h4><ul>
+<li><p>确认账户状态：</p>
+<p>确认<code>SYSTEM</code>账户的状态确实是解锁的。可以使用以下命令查看账户状态：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username, account_status <span class="keyword">FROM</span> dba_users <span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;SYSTEM&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解锁后，尝试登录<code>SYSTEM</code>账号，以确认账号已成功解锁。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/05/oracle%E8%B4%A6%E5%8F%B7%E9%94%81%E5%AE%9A%E8%A7%A3%E5%86%B3/" data-id="cltdpdvfu0000tkum35y68bqz" data-title="oracle账号锁定解决" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/02/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/03/05/oracle%E8%B4%A6%E5%8F%B7%E9%94%81%E5%AE%9A%E8%A7%A3%E5%86%B3/">oracle账号锁定解决</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Xlai<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
